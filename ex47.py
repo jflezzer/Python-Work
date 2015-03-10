@@ -1,4 +1,4 @@
-def get_grade():
+def getgrade():
     try:
         inp = raw_input("Enter Grade:")
         grade = float(inp)
@@ -6,12 +6,14 @@ def get_grade():
         print "Error, please enter numeric input"
         quit()
 
-    #check grade value
+#check grade value
+def errorcheck(grade):
     if grade > 1.0:
         print "Please enter a grade between 0.0 and 1.0"
         quit()
     
-    #print letter grade
+#print letter grade
+def printgrade(grade):
     if grade >= 0.9:
         print "A"
     elif grade >= 0.8:
@@ -23,4 +25,6 @@ def get_grade():
     else:
         print "F"
         
-get_grade()
+getgrade(inp)
+errorcheck(grade)
+printgrade(grade)
