@@ -1,13 +1,12 @@
 # Use words.txt as the file name
-#prompt for file name
-fname = raw_input("Enter file name: ")
-#open file
-fh = open(fname)
+try:
+	fname = raw_input("Enter file name: ")
+	fh = open(fname)
+except:
+	print "File name not found: ",fname
+	exit()
 
-#read through the file
-for word in fh:
-    word = word.rstrip()
-#print contents of the file in upper case
-    print word.upper()
-    
-
+for line in fh:
+	line = line.rstrip()
+	words = line.upper()
+	print words
