@@ -5,17 +5,23 @@ handle = open(name)
 #declare our variables
 emails = list()
 senders = dict()
-bigSender = None
-bigFreq = None
 
 #find the lines that begin with 'From'
 
 for line in handle:
-    if not line.startswith('From'):continue
-        #split the text of the line into a list
-        emails = line.split()
-        #extract the 2nd word from the list and add it to the dictionary
-        for email in emails:
-            senders[email] = emails[2].get
+    line = line.rstrip()
+    if not line.startswith('From:'):continue
+    emails = line.split()
+    senders[emails[1]] = senders.get(emails[1],0) + 1
 
-#loop through the dictionary selecting the most frequent sender and the frequency
+# this is the idiom for searching a key, value set for the highest value
+# these variables aren't needed until this loop is ready to run
+bigSender = None
+bigFreq = 0
+
+for key, value in senders.items():
+    if value > bigFreq:
+        bigSender = key
+        bigFreq = value
+        
+print bigSender, bigFreq
